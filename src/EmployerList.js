@@ -35,7 +35,7 @@ const EmployerList = () => {
   useEffect(() => {
     let q = collection(db, "employers");
 
-    // Apply filters dynamically
+    
     if (filters.department) {
       q = query(q, where("department", "==", filters.department));
     }
@@ -100,7 +100,7 @@ const EmployerList = () => {
         </Typography>
         <Box sx={{ marginBottom: 2 }}>
           <Grid container spacing={2}>
-            {/* Filter by Department */}
+            
             <Grid item xs={12} sm={4}>
               <TextField
                 fullWidth
@@ -111,7 +111,7 @@ const EmployerList = () => {
                 placeholder="Enter department"
               />
             </Grid>
-            {/* Filter by Joining Date */}
+            
             <Grid item xs={12} sm={4}>
               <TextField
                 fullWidth
@@ -123,7 +123,7 @@ const EmployerList = () => {
                 InputLabelProps={{ shrink: true }}
               />
             </Grid>
-            {/* Filter by Position */}
+            
             <Grid item xs={12} sm={4}>
               <TextField
                 fullWidth
