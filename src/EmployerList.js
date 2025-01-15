@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "./firebase.js";
-import { collection, query, onSnapshot, where } from "firebase/firestore";
+import { collection, query, onSnapshot, where, doc, deleteDoc } from "firebase/firestore";
 import {
   Box,
   Typography,
@@ -8,6 +8,8 @@ import {
   Grid,
   Card,
   CardContent,
+  CardActions,
+  Button,
   Container,
 } from "@mui/material";
 
@@ -26,7 +28,16 @@ const EmployerList = () => {
 
     return () => unsubscribe();
   }, [filter]);
-  
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, "employers", id));
+      console.log("Employer deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting employer:", error);
+    }
+  };
+
   return (
     <Container maxWidth="md">
       <Box
@@ -60,7 +71,22 @@ const EmployerList = () => {
                   <Typography>City: {employer.city}</Typography>
                   <Typography>Address: {employer.address}</Typography>
                   <Typography>Department: {employer.department}</Typography>
+                  <Typography>Email: {employer.email}</Typography>
+                  <Typography>Phone: {employer.phone}</Typography>
+                  <Typography>
+                    Joining Date: {new Date(employer.joiningDate).toLocaleDateString()}
+                  </Typography>
+                  <Typography>Position: {employer.position}</Typography>
                 </CardContent>
+                <CardActions>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => handleDelete(employer.id)}
+                  >
+                    Delete
+                  </Button>
+                </CardActions>
               </Card>
             </Grid>
           ))}
