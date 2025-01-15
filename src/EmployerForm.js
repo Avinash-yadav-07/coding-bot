@@ -8,6 +8,9 @@ import {
   Typography,
   Grid,
   Container,
+  MenuItem,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 
 const EmployerForm = () => {
@@ -17,7 +20,13 @@ const EmployerForm = () => {
     city: "",
     address: "",
     department: "",
+    email: "",
+    phone: "",
+    joiningDate: "",
+    position: "",
   });
+
+  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +35,7 @@ const EmployerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       await addDoc(collection(db, "employers"), formData);
       setFormData({
@@ -34,13 +44,22 @@ const EmployerForm = () => {
         city: "",
         address: "",
         department: "",
+        email: "",
+        phone: "",
+        joiningDate: "",
+        position: "",
       });
-      alert("Employer added successfully!");
+      setSnackbar({ open: true, message: "Employer added successfully!", severity: "success" });
     } catch (error) {
       console.error("Error adding employer:", error);
+      setSnackbar({ open: true, message: "Failed to add employer.", severity: "error" });
     }
   };
-  
+
+  const handleSnackbarClose = () => {
+    setSnackbar({ ...snackbar, open: false });
+  };
+
   return (
     <Container maxWidth="sm">
       <Box
@@ -57,6 +76,7 @@ const EmployerForm = () => {
         </Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
+            {/* Name */}
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -67,6 +87,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
+            {/* Age */}
             <Grid item xs={6}>
               <TextField
                 fullWidth
@@ -78,6 +99,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
+            {/* City */}
             <Grid item xs={6}>
               <TextField
                 fullWidth
@@ -88,6 +110,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
+            {/* Address */}
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -100,6 +123,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
+            {/* Department */}
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -110,19 +134,88 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
+            {/* Email */}
             <Grid item xs={12}>
-              <Button
+              <TextField
                 fullWidth
-                type="submit"
-                variant="contained"
-                color="primary"
+                label="Email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                helperText="Enter a valid email address"
+              />
+            </Grid>
+            {/* Phone */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Phone Number"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                inputProps={{ pattern: "[0-9]{10}" }}
+                helperText="Enter a 10-digit phone number"
+              />
+            </Grid>
+            {/* Joining Date */}
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                label="Joining Date"
+                name="joiningDate"
+                type="date"
+                value={formData.joiningDate}
+                onChange={handleChange}
+                InputLabelProps={{ shrink: true }}
+                required
+              />
+            </Grid>
+            {/* Position */}
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                label="Position"
+                name="position"
+                value={formData.position}
+                onChange={handleChange}
+                select
+                required
               >
+                <MenuItem value="Manager">Manager</MenuItem>
+                <MenuItem value="Developer">Developer</MenuItem>
+                <MenuItem value="Designer">Designer</MenuItem>
+                <MenuItem value="HR">HR</MenuItem>
+                <MenuItem value="Other">Other</MenuItem>
+              </TextField>
+            </Grid>
+            {/* Submit Button */}
+            <Grid item xs={12}>
+              <Button fullWidth type="submit" variant="contained" color="primary">
                 Add Employer
               </Button>
             </Grid>
           </Grid>
         </form>
       </Box>
+      {/* Snackbar Notification */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
