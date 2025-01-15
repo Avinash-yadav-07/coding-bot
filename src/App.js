@@ -4,6 +4,7 @@ import EmployerForm from "./EmployerForm";  // Make sure you have EmployerForm.j
 import EmployerList from "./EmployerList";  // Make sure you have EmployerList.js
 import "./App.css";  // Import the custom CSS for the button
 
+
 const App = () => {
   const navigate = useNavigate();
 
@@ -16,6 +17,14 @@ const App = () => {
       alignItems: "center", 
       backgroundColor: "#f0f8ff" 
     }}>
+      {/* Logo Section */}
+      <img 
+        src="https://trufe.com/wp-content/uploads/2024/09/Untitled-design-1.png" 
+        alt="Employer Management Logo" 
+        style={{ width: "200px", marginBottom: "30px" }} 
+      />
+
+      {/* Heading */}
       <h1 style={{ marginBottom: "40px", color: "#333" }}>Employer Management System</h1>
       
       {/* Flex container for horizontal alignment */}
@@ -53,4 +62,3 @@ function MainApp() {
 }
 
 export default MainApp;
-// Avinash yadav
