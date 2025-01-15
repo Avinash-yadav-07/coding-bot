@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "./firebase.js";
+import { useNavigate } from "react-router-dom";
 import {
   collection,
   query,
@@ -23,6 +24,7 @@ import {
 } from "@mui/material";
 
 const EmployerList = () => {
+  const navigate = useNavigate();
   const [employers, setEmployers] = useState([]);
   const [filters, setFilters] = useState({
     department: "",
@@ -67,6 +69,23 @@ const EmployerList = () => {
 
   return (
     <Container maxWidth="md">
+       <Button 
+        className="custom-button"
+        onClick={() => navigate("/")}
+        sx={{ mt: 2, mb: 2, display: 'block', margin: '20px auto' }}
+      >
+        Back to Home
+      </Button>
+
+      <Box
+        sx={{
+          marginTop: 4,
+          padding: 2,
+          backgroundColor: "#f9f9f9",
+          borderRadius: 2,
+          boxShadow: 3,
+        }}
+      ></Box>
       <Box
         sx={{
           marginTop: 4,
