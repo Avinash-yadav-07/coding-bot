@@ -106,7 +106,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
-            {/* Age */}
+            
             <Grid item xs={6}>
               <TextField
                 fullWidth
@@ -118,7 +118,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
-            {/* City */}
+            
             <Grid item xs={6}>
               <TextField
                 fullWidth
@@ -129,7 +129,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
-            {/* Address */}
+            
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -142,7 +142,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
-            {/* Department */}
+            
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -153,7 +153,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
-            {/* Email */}
+            
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -166,7 +166,7 @@ const EmployerForm = () => {
                 helperText="Enter a valid email address"
               />
             </Grid>
-            {/* Phone */}
+            
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -180,7 +180,7 @@ const EmployerForm = () => {
                 helperText="Enter a 10-digit phone number"
               />
             </Grid>
-            {/* Joining Date */}
+          
             <Grid item xs={6}>
               <TextField
                 fullWidth
@@ -193,7 +193,7 @@ const EmployerForm = () => {
                 required
               />
             </Grid>
-            {/* Position */}
+            
             <Grid item xs={6}>
               <TextField
                 fullWidth
@@ -211,7 +211,7 @@ const EmployerForm = () => {
                 <MenuItem value="Other">Other</MenuItem>
               </TextField>
             </Grid>
-            {/* Submit Button */}
+            
             <Grid item xs={12}>
               <Button fullWidth type="submit" variant="contained" color="primary">
                 Add Employer
@@ -220,7 +220,7 @@ const EmployerForm = () => {
           </Grid>
         </form>
       </Box>
-      {/* Snackbar Notification */}
+      
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}
