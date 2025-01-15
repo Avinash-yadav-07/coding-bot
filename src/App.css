@@ -1,4 +1,4 @@
-/* App Styling */
+
 .App {
   text-align: center;
   font-family: 'Arial', sans-serif;
@@ -48,7 +48,7 @@
   }
 }
 
-/* Custom Button Styling */
+
 .custom-button {
   --glow-color: rgb(0, 123, 255);
   --glow-spread-color: rgba(0, 123, 255, 0.7);
@@ -103,16 +103,16 @@
   transform: translateY(0);
 }
 
-/* Button Container */
+
 .button-container {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  flex-wrap: wrap; 
 }
 
-/* Responsive Enhancements */
+
 @media (max-width: 768px) {
   .custom-button {
     font-size: 14px;
