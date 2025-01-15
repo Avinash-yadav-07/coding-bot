@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "./firebase.js";
 import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   TextField,
@@ -14,6 +15,7 @@ import {
 } from "@mui/material";
 
 const EmployerForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -62,6 +64,23 @@ const EmployerForm = () => {
 
   return (
     <Container maxWidth="sm">
+      <Button 
+        className="custom-button"
+        onClick={() => navigate("/")}
+        sx={{ mt: 2, mb: 2, display: 'block', margin: '20px auto' }}
+      >
+        Back to Home
+      </Button>
+
+      <Box
+        sx={{
+          marginTop: 4,
+          padding: 4,
+          borderRadius: 2,
+          boxShadow: 3,
+          backgroundColor: "#f9f9f9",
+        }}
+      ></Box>
       <Box
         sx={{
           marginTop: 4,
