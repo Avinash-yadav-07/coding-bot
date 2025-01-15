@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import EmployerForm from "./EmployerForm";  // Make sure you have EmployerForm.js
-import EmployerList from "./EmployerList";  // Make sure you have EmployerList.js
-import "./App.css";  // Import the custom CSS for the button
+import EmployerForm from "./EmployerForm";  
+import EmployerList from "./EmployerList";  
+import "./App.css";  
 
 
 const App = () => {
@@ -17,19 +17,19 @@ const App = () => {
       alignItems: "center", 
       backgroundColor: "#f0f8ff" 
     }}>
-      {/* Logo Section */}
+      
       <img 
         src="https://trufe.com/wp-content/uploads/2024/09/Untitled-design-1.png" 
         alt="Employer Management Logo" 
         style={{ width: "200px", marginBottom: "30px" }} 
       />
 
-      {/* Heading */}
+      
       <h1 style={{ marginBottom: "40px", color: "#333" }}>Employer Management System</h1>
       
-      {/* Flex container for horizontal alignment */}
+    
       <div className="button-container">
-        {/* Add Employee Button */}
+        
         <button
           onClick={() => navigate("/add")}
           className="custom-button"
@@ -37,7 +37,7 @@ const App = () => {
           Add Employee
         </button>
 
-        {/* View Employees Button */}
+        
         <button
           onClick={() => navigate("/view")}
           className="custom-button"
