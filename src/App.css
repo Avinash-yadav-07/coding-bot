@@ -1,10 +1,15 @@
+/* App Styling */
 .App {
   text-align: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,6 +31,12 @@
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.App-link:hover {
+  color: #21a1f1;
 }
 
 @keyframes App-logo-spin {
@@ -36,26 +47,30 @@
     transform: rotate(360deg);
   }
 }
-/* From Uiverse.io by cssbuttons-io */
+
+/* Custom Button Styling */
 .custom-button {
-  --glow-color: rgb(0, 0, 0);
-  --glow-spread-color: rgba(17, 6, 27, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(255, 255, 255);
-  border: .25em solid var(--glow-color);
-  padding: 1em 3em;
+  --glow-color: rgb(0, 123, 255);
+  --glow-spread-color: rgba(0, 123, 255, 0.7);
+  --enhanced-glow-color: rgb(231, 240, 255);
+  --btn-color: #ffffff;
+  border: 0.25em solid var(--glow-color);
+  padding: 1em 2.5em;
   color: var(--glow-color);
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
   background-color: var(--btn-color);
   border-radius: 1em;
   outline: none;
-  box-shadow: 0 0 1em .25em var(--glow-color),
-          0 0 4em 1em var(--glow-spread-color),
-          inset 0 0 .75em .25em var(--glow-color);
-  text-shadow: 0 0 .5em var(--glow-color);
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+              0 0 2em 0.5em var(--glow-spread-color),
+              inset 0 0 0.5em 0.2em var(--glow-color);
+  text-shadow: 0 0 0.5em var(--glow-color);
   position: relative;
-  transition: all 0.3s;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .custom-button::after {
@@ -67,29 +82,44 @@
   height: 100%;
   width: 100%;
   background-color: var(--glow-spread-color);
-  filter: blur(2em);
-  opacity: .7;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+  filter: blur(1.5em);
+  opacity: 0.8;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
 }
 
 .custom-button:hover {
   color: var(--btn-color);
   background-color: var(--glow-color);
-  box-shadow: 0 0 1em .25em var(--glow-color),
-          0 0 4em 2em var(--glow-spread-color),
-          inset 0 0 .75em .25em var(--glow-color);
+  box-shadow: 0 0 1.5em 0.3em var(--glow-color),
+              0 0 3em 1.5em var(--glow-spread-color),
+              inset 0 0 0.75em 0.25em var(--glow-color);
+  transform: translateY(-2px);
 }
 
 .custom-button:active {
-  box-shadow: 0 0 0.6em .25em var(--glow-color),
-          0 0 2.5em 2em var(--glow-spread-color),
-          inset 0 0 .5em .25em var(--glow-color);
+  box-shadow: 0 0 0.5em 0.2em var(--glow-color),
+              0 0 2em 1.2em var(--glow-spread-color),
+              inset 0 0 0.4em 0.15em var(--glow-color);
+  transform: translateY(0);
 }
 
-/* Flex container to align buttons horizontally with spacing */
+/* Button Container */
 .button-container {
   display: flex;
-  justify-content: center; /* Align buttons horizontally in the center */
-  gap: 20px; /* Add space between buttons */
-  margin-top: 20px; /* Add margin to top of the buttons */
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .custom-button {
+    font-size: 14px;
+    padding: 0.8em 2em;
+  }
+
+  .button-container {
+    gap: 15px;
+  }
 }
