@@ -22,6 +22,7 @@ import {
   Container,
   MenuItem,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const EmployerList = () => {
   const [employers, setEmployers] = useState([]);
@@ -31,6 +32,7 @@ const EmployerList = () => {
     position: "",
   });
   const [editingEmployer, setEditingEmployer] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let q = collection(db, "employers");
@@ -97,10 +99,10 @@ const EmployerList = () => {
     <Container maxWidth="md">
       <Button
         className="custom-button"
-        onClick={() => setEditingEmployer(null)}
+        onClick={() => navigate("/")}
         sx={{ mt: 2, mb: 2, display: "block", margin: "20px auto" }}
       >
-        Back to Employer List
+        Back to Home
       </Button>
 
       {editingEmployer ? (
